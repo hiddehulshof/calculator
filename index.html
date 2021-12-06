@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Frontend Mentor | Calculator app</title>
+</head>
+<body>
+<main id="app">
+    <section class="content__container" :class="currentTheme">
+        <div class="calculator__card">
+            <div class="calculator__content">
+                <div class="calculator__header">
+                    <div class="calculator__header_content">
+                        <h1>calc</h1>
+                        <div class="theme-toggle">
+                            <h3>THEME</h3>
+                            <label class="custom-radio-button first">
+                                <input id="first" @click="setTheme(1)" name="toggle-state" type="radio" checked/>
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-radio-button middle">
+                                <input id="second" @click="setTheme(2)" name="toggle-state" type="radio"/>
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-radio-button last">
+                                <input id="third" @click="setTheme(3)" name="toggle-state" type="radio"/>
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="output__box">
+                    <h1>{{ currentInput || 0 }}</h1>
+                </div>
+                <div class="key__box">
+                    <div class="key_row">
+                        <div class="key">
+                            <div class="key__content" @click="add(7)">
+                                7
+                            </div>
+                        </div>
+                        <div class="key">
+                            <div class="key__content" @click="add(8)">
+                                8
+                            </div>
+                        </div>
+                        <div class="key">
+                            <div class="key__content" @click="add(9)">
+                                9
+                            </div>
+                        </div>
+                        <div class="key__alt">
+                            <div class="key__content" @click="removeLast()">
+                                DEL
+                            </div>
+                        </div>
+                    </div>
+                    <div class="key_row">
+                        <div class="key">
+                            <div class="key__content" @click="add(4)">
+                                4
+                            </div>
+                        </div>
+                        <div class="key">
+                            <div class="key__content" @click="add(5)">
+                                5
+                            </div>
+                        </div>
+                        <div class="key">
+                            <div class="key__content" @click="add(6)">
+                                6
+                            </div>
+                        </div>
+                        <div class="key">
+                            <div class="key__content" @click="handleOperator('+')">
+                                +
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="key_row">
+                        <div class="key">
+                            <div class="key__content" @click="add(1)">
+                                1
+                            </div>
+                        </div>
+                        <div class="key">
+                            <div class="key__content" @click="add(2)">
+                                2
+                            </div>
+                        </div>
+                        <div class="key">
+                            <div class="key__content" @click="add(3)">
+                                3
+                            </div>
+                        </div>
+                        <div class="key">
+                            <div class="key__content" @click="handleOperator('-')">
+                                -
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="key_row">
+                        <div class="key">
+                            <div class="key__content">
+                                .
+                            </div>
+                        </div>
+                        <div class="key">
+                            <div class="key__content" @click="add(0)">
+                                0
+                            </div>
+                        </div>
+                        <div class="key">
+                            <div class="key__content" @click="handleOperator('/')">
+                                /
+                            </div>
+                        </div>
+                        <div class="key">
+                            <div class="key__content" @click="handleOperator('x')">
+                                x
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="key_row">
+                        <div class="key__alt">
+                            <div class="key__content" @click="resetCalc()">
+                                Reset
+                            </div>
+                        </div>
+                        <div class="key__equals">
+                            <div class="key__content" @click="handleOperator('=')">
+                                =
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            currentTheme: 'bg__theme_1',
+            currentOperator: null,
+            previousInput: null,
+            currentInput: '',
+            clickedOperator: false,
+            numberArray: []
+        },
+        methods: {
+            add(value) {
+                if (this.clickedOperator) {
+                    this.clickedOperator = false
+                    this.currentInput = value
+                } else {
+                    this.currentInput = this.currentInput === '0' ? value : `${this.currentInput}${value}`
+                }
+            },
+            removeLast() {
+                this.currentInput = this.currentInput.substring(0, this.currentInput.length - 1);
+            },
+            handleOperator(newOperator) {
+                let numberValue = parseFloat(this.currentInput)
+                if (isNaN(numberValue)) {
+                    numberValue = 0
+                }
+                if (this.currentOperator && this.clickedOperator) {
+                    this.operator = newOperator
+                }
+                if (this.previousInput == null) {
+                    this.previousInput = numberValue
+                } else if (this.operator) {
+                    const result = this.calculate(this.previousInput, numberValue, this.operator)
+                    this.currentInput = String(result)
+                    this.previousInput = result
+                }
+                this.clickedOperator = true
+                this.operator = newOperator
+            },
+            calculate(first, second, operator) {
+                switch (operator) {
+                    case '+':
+                        return first + second
+                    case '-':
+                        return first - second
+                    case 'x':
+                        return first * second
+                    case '/':
+                        return first / second
+                    default:
+                        return second
+                }
+            },
+            resetCalc() {
+                this.currentInput = ''
+                this.previousInput = null
+                this.currentOperator = null
+                this.clickedOperator = false
+            },
+            setTheme(theme) {
+                if (theme === 1) {
+                    this.currentTheme = 'bg__theme_1'
+                } else if (theme === 2) {
+                    this.currentTheme = 'bg__theme_2'
+                } else {
+                    this.currentTheme = 'bg__theme_3'
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

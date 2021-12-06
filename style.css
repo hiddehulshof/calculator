@@ -1,0 +1,291 @@
+* { padding: 0; margin: 0; }
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Spartan;
+    font-weight: 700;
+}
+
+.bg__theme_1 {
+    background-color: hsl(222, 26%, 31%);
+    color: hsl(0, 0%, 100%);
+}
+
+.bg__theme_2 {
+    background-color: hsl(0, 0%, 90%);
+    color: hsl(60, 10%, 19%);
+}
+.bg__theme_3 {
+    background-color: hsl(268, 75%, 9%);
+    color: hsl(52, 100%, 62%);
+}
+
+.key {
+    border-radius: 5px;
+}
+.bg__theme_1 .key {
+    background-color: hsl(30, 25%, 89%);
+    color: hsl(221, 14%, 31%);
+    box-shadow: 0 10px hsl(28, 16%, 65%);
+}
+
+.bg__theme_2 .key {
+    background-color: hsl(45, 7%, 89%);
+    color: hsl(221, 14%, 31%);
+    box-shadow: 0 10px hsl(35, 11%, 61%);
+}
+
+.bg__theme_3 .key {
+    background-color: hsl(268, 47%, 21%);
+    color: hsl(52, 100%, 62%);
+    box-shadow: 0 10px hsl(290, 70%, 36%);
+}
+
+.key__alt {
+    border-radius: 5px;
+}
+
+.bg__theme_1 .key__alt {
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(225, 21%, 49%);
+    box-shadow: 0 10px hsl(224, 28%, 35%);
+}
+
+.bg__theme_2 .key__alt {
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(185, 42%, 37%);
+    box-shadow: 0 10px hsl(185, 58%, 25%);
+}
+
+.bg__theme_3 .key__alt {
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(281, 89%, 26%);
+    box-shadow: 0 10px hsl(285, 91%, 52%);
+}
+
+.bg__theme_1 .key__equals {
+    border-radius: 5px;
+    color: hsl(0, 0%, 100%);
+    background-color:hsl(6, 63%, 50%);
+    box-shadow: 0 10px hsl(6, 70%, 34%);
+}
+
+.bg__theme_2 .key__equals {
+    border-radius: 5px;
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(25, 98%, 40%);
+    box-shadow: 0 10px hsl(25, 99%, 27%);
+}
+
+.bg__theme_3 .key__equals {
+    border-radius: 5px;
+    color: hsl(198, 20%, 13%);
+    background-color: hsl(176, 100%, 44%);
+    box-shadow: 0 10px hsl(177, 92%, 70%);
+}
+
+.bg__theme_1 .output__box {
+    background-color: hsl(224, 36%, 15%);
+}
+
+.bg__theme_2 .output__box {
+    background-color: hsl(0, 0%, 100%);
+}
+
+.bg__theme_3 .output__box {
+    background-color: hsl(268, 71%, 12%);
+}
+
+.bg__theme_1 .key__box {
+    background-color: hsl(223, 31%, 20%);
+}
+
+.bg__theme_2 .key__box {
+    background-color: hsl(0, 5%, 81%);
+}
+
+.bg__theme_3 .key__box {
+    background-color: hsl(268, 71%, 12%);
+}
+
+.key__box {
+    padding: 2rem 1.5rem;
+    margin: 2rem 0;
+    border-radius: 10px;
+}
+.key_row {
+    text-align: center;
+    padding: 0.5rem 0;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.key__content {
+    padding: 1rem;
+    font-size: 28px;
+}
+
+.key {
+    margin: 10px 15px;
+    flex: 1;
+}
+.key__equals {
+    margin: 10px 15px;
+    flex: 1;
+}
+.key__alt {
+    margin: 10px 15px;
+    flex: 1;
+}
+@media only screen and (max-width: 600px) {
+    .key {
+        margin: 5px;
+    }
+    .key__equals {
+        margin: 5px;
+    }
+    .key__alt {
+        margin: 5px;
+    }
+}
+.key__alt .key__content {
+    font-size: 28px;
+}
+
+.output__box {
+    border-radius: 10px;
+}
+
+.output__box h1 {
+    padding: 2.5rem 1.5rem;
+    font-size: 48px;
+    text-align: right;
+}
+
+
+.content__container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.calculator__card {
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator__content {
+    width: 100%;
+    height: 100%;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.calculator__header {
+
+}
+
+.theme-toggle {
+    padding-top: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.theme-toggle h3 {
+    font-size: 14px;
+    padding: 0.25rem 2rem;
+}
+
+.custom-radio-button {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg__theme_1 .custom-radio-button {
+    background-color: hsl(223, 31%, 20%);
+}
+
+.bg__theme_2 .custom-radio-button {
+    background-color: hsl(0, 5%, 81%);
+}
+
+.bg__theme_3 .custom-radio-button {
+    background-color: hsl(268, 71%, 12%);
+}
+
+
+.bg__theme_3 .custom-radio-button .checkmark {
+    background-color: hsl(176, 100%, 44%);
+}
+
+.first {
+    border-radius: 50% 0 0 50%;
+    border-right: 0;
+}
+.first:before {
+    position: relative;
+    font-size: 12px;
+    width: 0;
+    content: '1';
+    top: -25px;
+    left: 6px;
+}
+.middle {
+    border-left: 0;
+    border-right: 0;
+}
+.middle:before {
+    position: relative;
+    font-size: 12px;
+    width: 0;
+    content: '2';
+    top: -25px;
+    left: 6px;
+}
+.last {
+    border-radius: 0 50% 50% 0;
+    border-left: 0;
+}
+.last:before {
+    position: relative;
+    font-size: 12px;
+    width: 0;
+    content: '3';
+    top: -25px;
+    left: 6px;
+}
+.custom-radio-button input {
+    display: none;
+}
+
+.custom-radio-button .checkmark {
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    background-color: hsl(6, 63%, 50%);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.custom-radio-button input:checked + .checkmark {
+    opacity: 1;
+    display: inline-block;
+}
+
+.calculator__header_content {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
